@@ -1,2 +1,6 @@
-# TitanBolt
-Official TitanBolt source code
+## Discord bot - 'MK'
+## =============
+
+BRAND SPANKING NEW BOT !
+
+Made by Jackthehack21.

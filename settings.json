@@ -1,0 +1,6 @@
+{
+  "prefix": "tb!",
+  "joinChannel": "bot-log",
+  "leaveChannel": "bot-log",
+  "levelUpMessage": "false"
+}

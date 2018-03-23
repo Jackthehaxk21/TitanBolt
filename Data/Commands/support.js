@@ -1,6 +1,12 @@
 var methods = {
-  
-  run: function(client, message) {
+  meta: {
+    name: "Support",
+    desc: "Request Support",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}support"
+  },
+  run: function(client, args, message) {
     if (message.channel.type == 'dm') {
         let mes = (`
 
@@ -8,16 +14,16 @@ var methods = {
 
 By clicking join you agree to the following ::
 
-MK-SupportStaff may collect information using 'MK' 
+TB-SupportStaff may collect information using 'TitanBolt' 
 and collect any data provided publically and collected privately
 
-MK-SupportStaff are not reliable for any damages this may cause to your servers bot 'MK'
-We as a third-party cannot release any details collected using MK.
+TB-SupportStaff are not reliable for any damages this may cause to your servers bot 'TitanBolt'
+We as a third-party cannot release any details collected using TitanBolt
 
-Your conversations with MK-SupportStaff may be kept for training and security purposes.
+Your conversations with TB-SupportStaff may be kept for training and security purposes.
 
 ----- AS OF 1st January 2018 -----
-MK will not collect any private data
+TB will not collect any private data
 ----------------------------------
 
 We hope to see you soon ::
@@ -26,7 +32,7 @@ We hope to see you soon ::
         var SUPPORT = client.guilds.get("395657844982022145");
         console.log('Support Case created for : '+message.author.tag.replace(/ +/g,'-').replace('#', '_').toLowerCase());
         SUPPORT.createChannel(message.author.tag.replace(/ +/g,'-').replace('#', '_').toLowerCase(), 'text').then(c => {
-          c.send('Welcome to MK-Support !\nPlease send a question regarding me and a support member will reply shortly !');
+          c.send('Welcome to TB-Support !\nPlease send a question regarding me and a support member will reply shortly !');
           c.createInvite().then(invite =>
             message.channel.send(invite.url)
           );

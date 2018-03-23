@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "AFK",
+    desc: "Set your afk status",
+    alias: "",
+    cat: "Social",
+    syntax: "{prefix}afk <ON|OFF|EDIT> <TEXT IF EDIT>"
+  },
   run: async function(client, args, message) {
     if(!args) return message.channel.send("Please check args, @Jackthehack usage afk")
     if(args[0] != 'on' && args[0] != 'off' && args[0] != 'edit') return message.channel.send("Please check args, @Jackthehack usage afk")

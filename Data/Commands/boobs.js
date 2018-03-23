@@ -1,4 +1,11 @@
 const methods = {
+  meta: {
+    name: "Boobs",
+    desc: "Get a random Boob image",
+    alias: "boob,boobies",
+    cat: "Image",
+    syntax: "{prefix}boobs"
+  },
   run: function(client, args, message) {
     if (!message.channel.nsfw) return message.channel.send("🔞" + " Cannot display NSFW content in a SFW channel.");
     const snek = require('snekfetch');

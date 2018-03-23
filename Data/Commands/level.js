@@ -1,5 +1,12 @@
 var methods = {
-  get: async function(client, message) { 
+  meta: {
+    name: "Level",
+    desc: "Show your level card",
+    alias: "Score",
+    cat: "Social",
+    syntax: "{prefix}level"
+  },
+  run: async function(client,args, message) { 
     const run = async function(message, level, points) { // eslint-disable-line no-unused-vars
       const getProfile = async function(user, person, points, level, rank) {
         const { Canvas } = require('canvas-constructor');
@@ -50,12 +57,12 @@ var methods = {
       //message.channel.send("Sorry but the social commands are down for repair\nVery sorry for any inconvienve caused.");
       //return;
       try {
-        let data = client.points.get(message.author.id);
+        let data = client.points.get(message.author.id+'-'+message.guild.id);
         run(message, data.level, data.points);
         return;
       } catch(e) {
         const data = require('../../points.json');
-        client.points.set(message.author.id, data);
+        client.points.set(message.author.id+'-'+message.guild.id, data);
         run(message, 1, 0)
         return;
       }

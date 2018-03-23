@@ -6,10 +6,11 @@ let methods = {
       chan = member.guild.channels.find('name',chan);
       chan.send('------- **CASE CLOSED** --------');
     } else {
+    try{
       const guild = member.guild;
-      let defaultChannel = await guild.channels.find("name", client.settings.get(guild.id).leaveMessageChannel);
+      let defaultChannel = await guild.channels.find("name", client.settings.get(guild.id).leaveChannel);
       //if (!defaultChannel) defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-      if (client.settings.get(guild.id).leaveMessageOn != "true" && client.settings.get(guild.id).leaveMessageOn != "true") return;
+      //if (client.settings.get(guild.id).leaveMessageOn != "true" && client.settings.get(guild.id).leaveMessageOn != "true") return;
       try {
         const { user } = member;
         const img = await member.user.displayAvatarURL.replace(/\.(gif|jpg|png|jpeg)\?size=2048/g, '.png?size=128');
@@ -18,8 +19,9 @@ let methods = {
        
         //defaultChannel.send("Oh no **" + member.user.username+ "** decided to leave... \nProbably the bad smell going round.");
       } catch (err) {
-        console.log("error");
+        //console.log("error");
       }
+    } catch(err) {}
     }
   }
 }

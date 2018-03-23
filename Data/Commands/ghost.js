@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Ghost",
+    desc: "play the ghost game",
+    alias: "",
+    cat: "Fun",
+    syntax: "{prefix}ghost"
+  },
   run: async function(client, args, message){
     try {
     let data = client.points.get(message.author.id);

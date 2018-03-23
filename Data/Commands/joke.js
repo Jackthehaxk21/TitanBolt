@@ -1,5 +1,12 @@
 let methods = {
-    get : function(client, args, message) {
+  meta: {
+    name: "Joke",
+    desc: "Get a random Joke",
+    alias: "",
+    cat: "Fun",
+    syntax: "{prefix}joke"
+  },
+    run: function(client, args, message) {
         //message.channel.send('```asciidoc\n⚠️ | SOME OF THESE CAN BE CONSIDERED NSFW BY SOME, WE HOLD NO RESPONSIBILITY FOR THE JOKES SHOWN | ⚠️```');
         const jokes = require("../Jokes.json");
         var random = jokes[Math.floor(Math.random() * jokes.length)];
@@ -8,7 +15,6 @@ let methods = {
           message.channel.send('**'+random.title+'**');
           message.channel.send("```"+random.body+"```");
         } else {
-          console.log('1');
           var random = jokes[Math.floor(Math.random() * jokes.length)];
           if (random.body.replace('\n','').replace('\r','').length  < 2000) {
             message.channel.send('**'+random.title+'**');

@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Dice",
+    desc: "Roll a dice",
+    alias: "roll",
+    cat: "Fun",
+    syntax: "{prefix}dice <Number of sides to roll>"
+  },
   run : async function(client, args, message) {
     let n = args[0];
     if (!n) {

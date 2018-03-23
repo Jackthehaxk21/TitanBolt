@@ -1,4 +1,11 @@
  let methods = {
+   meta: {
+    name: "Eval",
+    desc: "Private Eval",
+    alias: "",
+     cat: "Private",
+    syntax: "{prefix}eval <CODE>"
+  },
   run : async function(client, args, message) {
     function clean(text) {
       if (typeof(text) === "string") {

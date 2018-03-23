@@ -10,11 +10,12 @@ let methods = {
       chan = member.guild.channels.find('name', chan);
       //console.log(chan.overwritePermissions(member, {'SEND_MESSAGES': true, 'READ_MESSAGE_HISTORY': true, 'ATTACH_FILES': true, 'READ_MESSAGES': true}, 'JOIN-PERMS'));
     } else {
+      try {
       //console.log("else")
       const guild = member.guild;
-      let defaultChannel = guild.channels.find("name", client.settings.get(member.guild.id).welcomeMessageChannel);
+      let defaultChannel = guild.channels.find("name", client.settings.get(member.guild.id).joinChannel);
       //if (!defaultChannel) defaultChannel = guild.channels.find(c=> c.permissionsFor(guild.me).has("SEND_MESSAGES"));
-      if (client.settings.get(member.guild.id).welcomeMessageOn != "true" && client.settings.get(member.guild.id).welcomeMessageOn != "True") return;
+      //if (client.settings.get(member.guild.id).welcomeMessageOn != "true" && client.settings.get(member.guild.id).welcomeMessageOn != "True") return;
       try {
         const { user } = member;
         const img = await member.user.displayAvatarURL.replace(/\.(gif|jpg|png|jpeg)\?size=2048/g, '.png?size=128');
@@ -24,6 +25,7 @@ let methods = {
       } catch (err) {
         console.log("error");
       }
+      } catch (err) {}
     }
   }
 }

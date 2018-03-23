@@ -1,4 +1,11 @@
 const methods = {
+  meta: {
+    name: "Cat",
+    desc: "Get a random Cat image",
+    alias: "",
+    cat: "Image",
+    syntax: "{prefix}cat"
+  },
   run: async function(client, args, message) {
     const API = require('./API/image.js');
     const snek = require('snekfetch');

@@ -7,3 +7,10 @@ module.exports.run = async function(client, args, message) {
         await client.API.achievement(img, text), name: 'achievement.png' }] }); ;
       return;
 }
+module.exports.meta = {
+    name: "Achievement",
+    desc: "Get a Minecraft style achievement",
+    alias: "",
+    cat: "Image",
+    syntax: "{prefix}achievement <ACHIEVEMENT TEXT>"
+}

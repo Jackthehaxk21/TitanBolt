@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Settings",
+    desc: "See your server settings",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}settings <view|edit> <key if edit> <value if edit>"
+  },
   run: async function(client, args, message){
     if(args.size < 1) {
       message.channel.send("Please use "+ await client.settings.get(message.guild.id).prefix+"settings view|edit");
@@ -10,13 +17,10 @@ let methods = {
         let chan = `
 ${message.guild.name}'s Settings !
 
-prefix                 :: ${data.prefix}
-welcomeMessageOn       :: ${data.welcomeMessageOn}
-welcomeMessageChannel  :: ${data.welcomeMessageChannel}
-leaveMessageOn         :: ${data.leaveMessageOn}
-leaveMessageChannel    :: ${data.leaveMessageChannel}
-levelUpMessageOn       :: ${data.levelUpMessageOn}
-systemNoticeChannel    :: ${data.systemNoticeChannel}
+prefix           :: ${data.prefix}
+joinChannel      :: ${data.joinChannel}
+leaveChannel     :: ${data.leaveChannel}
+levelUpMessage   :: ${data.levelUpMessage}
 
 for e.g to change prefix type:
 ${data.prefix}settings edit prefix NEW-PREFIX-HERE

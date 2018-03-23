@@ -33,6 +33,7 @@ let methods = {
     
     const dbl = require('../../../Data/Functions/dbl.js');
     dbl.run(client, prefix);
+    await client.settings.deleteAsync(guild.id)
     console.log(`Left a guild: ${guild.name} (id: ${guild.id}). This guild had ${guild.memberCount} members!`);
     
   }

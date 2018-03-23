@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Suggest",
+    desc: "Suggest a command !",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}suggest <TEXT TO SUGGEST>"
+  },
   run: async function(client, args, message, prefix){
     //if (message.author.id != process.env.ownerID) {
     if (args < 2){

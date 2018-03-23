@@ -1,7 +1,7 @@
 let methods = {
   run : function(client) {
     var express = require('express');
-    let data = require('./Data/Quotes.json')
+    //let data = require('./Data/Quotes.json')
     var app = express();
 
 // we've started you off with Express, 
@@ -13,11 +13,11 @@ app.use(express.static('public'));
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, response) {
   response.sendFile(__dirname + '/views/index.html');
-  var ip = client.getAPI(req);
+  var ip = client.getIP(req);
   if(ip != '63.143.42.250' && ip != '52.70.8.194' && ip != '52.206.197.21') client.sendAPISPAM("/ - " + ip);
 });
 
-app.get("/TEST", function (req, response) {
+/*app.get("/TEST", function (req, response) {
   response.sendFile(__dirname + '/views/TEST-API.html');
   var ip = client.getAPI(req);
   client.sendAPISPAM("/TEST - " + ip);
@@ -72,7 +72,7 @@ app.get('*', function(req, res){
 app.post("/dreams", function (request, response) {
   client.dreams.push(request.query.dream);
   response.sendStatus(200);
-});
+});*/
 
 // Simple in-memory store for now
 

@@ -1,4 +1,11 @@
 const methods = {
+  meta: {
+    name: "Dog",
+    desc: "Get a random Dog image",
+    alias: "",
+    cat: "Image",
+    syntax: "{prefix}dog"
+  },
   run: async function(client, args, message) {
     const snek = require('snekfetch');
     const msg = await message.channel.send(`**MK** is looking for a dog...`);

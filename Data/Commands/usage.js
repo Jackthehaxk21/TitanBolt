@@ -1,17 +1,27 @@
 let methods = {
-  get : function(client, args, message, prefix) {
+  meta: {
+    name: "Usage",
+    desc: "See Command Usage",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}usage <Command Name>"
+  },
+  run: function(client, args, message, prefix) {
     let command = args[0];
-    const data = require('../usage.json');
     if (command == undefined || command == null) {
-      message.channel.send('**Usage **| ⚠️ | Invalid usage e.g. !usage kick');
+      message.channel.send('**Usage **| ⚠️ | Invalid usage e.g. usage kick');
       return;
     } else {
       command = command.toLowerCase();
       try {
+        let meta = require('./'+command+'.js').meta
+        let alias = meta.alias
+        if(alias == '') alias = 'None'
         var txt = `
-Title   :: ${data[command].title}
-Usage   :: ${prefix}${data[command].usage} 
-Notes   :: ${data[command].notes}
+Title   :: ${meta.name}
+Desc    :: ${meta.desc}
+Usage   :: ${meta.syntax.replace('{prefix}', prefix)} 
+Alias   :: ${alias}
 `;
         message.channel.send(txt, {code:'asciidoc'});
         return;

@@ -35,6 +35,8 @@ MK2.send({embed: {
     
     const dbl = require('../../../Data/Functions/dbl.js');
     dbl.run(client, prefix);
+    let settings = require('../../../settings.json');
+    client.settings.set(guild.id, settings);
     console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
     
   }

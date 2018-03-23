@@ -1,6 +1,7 @@
 const methods = {
   run: function(client){
     //if(prefix == 'mkb!') return;
+    return;
     const dbl = require(`discord-bot-list`)
  
     const Bot = new dbl({

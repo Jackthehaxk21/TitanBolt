@@ -1,4 +1,11 @@
 const methods = { 
+  meta: {
+    name: "Pussy",
+    desc: "Get a random Pussy Image",
+    alias: "",
+    cat: "Image",
+    syntax: "{prefix}pussy"
+  },
   run: function(client, args, message){
     if (!message.channel.nsfw) return message.channel.send("🔞" + " Cannot display NSFW content in a SFW channel.");
     const randomPuppy = require('random-puppy');

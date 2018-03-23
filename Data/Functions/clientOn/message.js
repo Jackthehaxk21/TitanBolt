@@ -45,24 +45,24 @@ let methods = {
     //console.log(prefix);
     //console.log("after");
     if(message.author.bot && message.author.id != 395520567815569409) return;
-    client.user.setPresence({game: {name: " @Jackthehack help | Guilds: " + client.guilds.size, type: 0}});
+    client.user.setPresence({game: {name: " tb!help | Servers: " + client.guilds.size, type: 0}});
     const commandHandler = require('../../../Data/Commands/handler.js');
     
     let newTime = Date.now();
     
     const updateMoney = async function(message, amount = 0) {
     try {
-      let data = client.points.get(message.author.id)
+      let data = client.points.get(message.author.id+'-'+message.guild.id)
       data.money += amount;
       data.daily = newTime;
-      client.points.set(message.author.id, data);
+      client.points.set(message.author.id+'-'+message.guild.id, data);
       return;
     } catch (err) {
       const set = require('../../../points.json');
       let data = set;
       data.money += amount;
       data.daily = newTime;
-      client.points.set(message.author.id, data);
+      client.points.set(message.author.id+'-'+message.guild.id, data);
       return;
     }
     }
@@ -70,7 +70,7 @@ let methods = {
     
     const updatePoints = async function(message, amount=1) {
     try {
-      let data = client.points.get(message.author.id);
+      let data = client.points.get(message.author.id+'-'+message.guild.id);
       data.points += amount;
       let curLevel = Math.floor(0.35 * Math.sqrt(data.points + 1));
       if (curLevel > data.level) {
@@ -80,7 +80,7 @@ let methods = {
             message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
         }
       }
-      client.points.set(message.author.id, data);
+      client.points.set(message.author.id+'-'+message.guild.id, data);
     } catch(e) {
       let newTime = Date.now();
       let data = require('../../../points.json');
@@ -94,7 +94,7 @@ let methods = {
             message.reply(`You've leveled up to level **${curLevel}**! Ain't that dandy?`);
         }
       }*/
-      client.points.set(message.author.id, data);
+      client.points.set(message.author.id+'-'+message.guild.id, data);
     
     }
     }

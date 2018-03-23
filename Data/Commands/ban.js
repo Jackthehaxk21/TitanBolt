@@ -1,5 +1,12 @@
 var methods = {
-    ban: async function(client, args, message) {
+  meta: {
+    name: "Ban",
+    desc: "Ban a user",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}ban @USER <reason>"
+  },
+    run: async function(client, args, message) {
             if(!message.member.hasPermission("BAN_MEMBERS")) {
                 message.reply("**ban **| ⚠️ | You don't have permissions to use this.");
                 return;

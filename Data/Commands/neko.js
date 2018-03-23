@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Neko",
+    desc: "Get a random Neko Image",
+    alias: "",
+    cat: "Image",
+    syntax: "{prefix}neko"
+  },
   run : async function(client, args, message) {
     const snek = require("snekfetch");
     const { body } = await snek.get(`https://nekos.life/api${message.channel.nsfw === true ? "/lewd" : ""}/neko`);

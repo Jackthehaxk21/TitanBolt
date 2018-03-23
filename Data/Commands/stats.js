@@ -1,5 +1,12 @@
 var methods = {
-   get: function(client, args, message) {
+   meta: {
+    name: "Stats",
+    desc: "Get bot stats",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}stats"
+},
+   run: function(client, args, message) {
        let check = '';
        let uptime = process.uptime();
        let days = '0';

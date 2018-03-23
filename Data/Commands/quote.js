@@ -1,19 +1,39 @@
 let methods = {
-  get : function(client, args, message) {
-    const quotes = require('../Quotes.json');
+  meta: {
+    name: "Quote",
+    desc: "Get a random quote",
+    alias: "",
+    cat: "Fun",
+    syntax: "{prefix}quote <ID - optional>"
+  },
+  run : async function(client, args, message) {
+    const snek = require('snekfetch')
+    let quote
     if (args.length == 0) {
-        var ID = Math.floor(Math.random()*266);
-        var randomAnswer = quotes[ID];
+      let data
+        try{
+          data = await snek.get('https://mk-web.glitch.me/api/quote?token=test')
+        } catch(err) {
+          message.channel.send("Server Temporarily Down")
+          return;
+        }
+        quote = data.text
     } else {
       if (parseInt(args[0]) < 267 && parseInt(args[0]) >= 0) {
-        var ID = parseInt(args[0]);
-        var randomAnswer = quotes[parseInt(args[0])];
+        let data 
+        try {
+          data = await snek.get('https://mk-web.glitch.me/api/quote?token=test&id='+args[0])
+        } catch (err) {
+          message.channel.send("Server Temporarily Down")
+          return;
+        }
+        quote = data.text
       } else {
           message.reply("No such quote exists under ID: `"+args[0]+"`");
           return;
       }
     }
-    message.channel.send('```ID: ' + ID + '\n\n' + randomAnswer + '```');
+    message.channel.send('```' +quote+ '```');
   }
 }
 

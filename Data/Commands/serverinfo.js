@@ -1,4 +1,11 @@
 var methods = {
+  meta: {
+    name: "Serverinfo",
+    desc: "See server information",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}serverinfo"
+  },
     run: async function(client, args, message) {
       try {
       let roles;

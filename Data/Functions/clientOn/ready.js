@@ -3,6 +3,7 @@ let methods = {
     //console.log(process.memoryUsage())
     const fs = require('fs')
     client.afk = await JSON.parse(fs.readFileSync("./Data/afk.json", "utf8"));
+    client.bans = await JSON.parse(fs.readFileSync("./Data/Bans.json", "utf8"));
 
     client.getIP = function(req) {
       var ip;
@@ -58,7 +59,7 @@ let methods = {
                        'invite','joke','kick','level','money','add','daily','neko','ping','purge','pussy','quote',
                        'reboot','setrole','remrole','say','serverinfo','settings','slots','stats','suggest','support',
                        'test','usage','userinfo','serverinfo','wanted','remind'];
-    client.user.setPresence({game: {name: " @Jackthehack help | Servers: " + client.guilds.size, type: 0}});
+    client.user.setPresence({game: {name: " @TitanBolt help | Servers: " + client.guilds.size, type: 0}});
     console.log('[SYS] | 💻 | I am ready!');
     const dbl = require('../../../Data/Functions/dbl.js');
     dbl.run(client);
@@ -66,14 +67,7 @@ let methods = {
     
 const Enmap = require('enmap');
 const EnmapLevel = require('enmap-level');
-// Oh look a shortcut to initializing ;)
-/*client.dreams = new Enmap({ provider: new EnmapLevel({ name: 'test'}) });
 
-(async function() {
-    await client.dreams.defer;
-    console.log(client.dreams.size + ' keys loaded (test)');
-}());
-    */
 client.settings = new Enmap({ provider: new EnmapLevel({ name: 'settings' }) });
  
 (async function() {
@@ -87,13 +81,6 @@ client.points = new Enmap({ provider: new EnmapLevel({ name: 'points' }) });
 (async function() {
     await client.points.defer;
     console.log(client.points.size + ' keys loaded (points)');
-}());
-    
-    client.reminders = new Enmap({ provider: new EnmapLevel({ name: 'reminders' }) });
- 
-(async function() {
-    await client.reminders.defer;
-    console.log(client.reminders.size + ' keys loaded (reminders)');
 }());
     
     
@@ -110,16 +97,15 @@ client.points = new Enmap({ provider: new EnmapLevel({ name: 'points' }) });
     }, 25000);
     
     setInterval(() => {
-      const toRemind = client.reminders.filter(r => r.reminderTimestamp <= Date.now());
-      toRemind.forEach(reminder => {
-        client.users.get(reminder.id).send(`You asked me to remind you to: \`${reminder.reminder}\``);
-        client.reminders.delete(`${reminder.id}-${reminder.reminderTimestamp}`);
-      }); 
-    }, 30000); 
+      //console.log('ping');
+      fs.writeFile("./Data/afk.json", JSON.stringify(client.afk), (err) => {
+        if (err) console.error(err)
+      });
+  }, 15000);
     
     setInterval(() => {
       //console.log('ping');
-      fs.writeFile("./Data/afk.json", JSON.stringify(client.afk), (err) => {
+      fs.writeFile("./Data/Bans.json", JSON.stringify(client.bans), (err) => {
         if (err) console.error(err)
       });
   }, 15000);

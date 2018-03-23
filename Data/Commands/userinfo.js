@@ -1,4 +1,11 @@
 var methods = {
+  meta: {
+    name: "Userinfo",
+    desc: "Get user information",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}userinfo @USER"
+  },
     run: async function(client, args, message){
       //console.log(message.member.roles);
       let member;

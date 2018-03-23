@@ -1,5 +1,12 @@
 var methods = {
-    flip : function(client, args, message) {
+  meta: {
+    name: "Coin",
+    desc: "Flip a coin",
+    alias: "flip",
+    cat: "Fun",
+    syntax: "{prefix}coin"
+  },
+    run : function(client, args, message) {
             var coin = ['Heads','Tails'];
             if (args[0] != undefined) {
               message.channel.send("**Coin** | ⚠️ | No arguments are needed.\n ");

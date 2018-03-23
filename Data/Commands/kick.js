@@ -9,7 +9,14 @@
 };*/
 
 var methods = {
-    kick: function(client, args, message) {
+  meta: {
+    name: "Kick",
+    desc: "Kick a user",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}kick @user <reason>"
+  },
+    run: function(client, args, message) {
             //console.log("kick");
             // This command must be limited to mods and admins. In this example we just hardcode the role names.
             // Please read on Array.some() to understand this bit: 

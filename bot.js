@@ -51,7 +51,7 @@ console.log = function(e){
 } catch(Err) {}*/
   process.stdout.write(e+'\n')
 }
-const prefix = "mk!";
+const prefix = "tb!";
 
 client.on("test", message => message.reply("test reply"));
 

@@ -1,5 +1,12 @@
 var methods = {
-    purge: function(client, args, message) {
+  meta: {
+    name: "purge",
+    desc: "Delete Mass Messages",
+    alias: "",
+    cat: "Utils",
+    syntax: "{prefix}purge <@User - optional> <AMOUNT>"
+  },
+    run: function(client, args, message) {
       const user = message.mentions.users.first()
       const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2]);
       var perms1 = message.member.permissions;

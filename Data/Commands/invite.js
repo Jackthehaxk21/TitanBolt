@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Invite",
+    desc: "Get my invite links",
+    alias: "Links,Link",
+    cat: "Utils",
+    syntax: "{prefix}invite"
+  },
   run: async function(client, args, message){
     //message.channel.send("start");
     if(message.author.id != process.env.ownerID) {

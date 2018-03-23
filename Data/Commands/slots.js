@@ -1,4 +1,11 @@
 let methods = {
+  meta: {
+    name: "Slots",
+    desc: "Spin the slot machine !",
+    alias: "",
+    cat: "Social",
+    syntax: "{prefix}slots"
+  },
   run: async function(client, args, message, sql) {
     //message.channel.send("UNDER-GOING A MAJOR FIX")
     //return;
@@ -84,7 +91,7 @@ let methods = {
        let newTime = Date.now();
        
        try {
-         let data = client.points.get(message.author.id)
+         let data = client.points.get(message.author.id+'-'+message.guild.id)
          if (parseInt(data.money) >= 100) {
            let toSet = parseInt(start(client, args, message));
            if (toSet >= 100) {
@@ -98,14 +105,14 @@ let methods = {
                return;
              }
            }
-           client.points.set(message.author.id, data);
+           client.points.set(message.author.id+'-'+message.guild.id, data);
          } else {
            message.channel.send('🎰 | You have $'+data.money+', You need $100 to spin.');
            return;
          }
        } catch (err) {
          let data = require('../../points.json');
-         client.points.set(message.author.id, data)
+         client.points.set(message.author.id+'-'+message.guild.id, data)
          message.channel.send('🎰 | You have $0, You need $100 to spin. ');
          return;
        }

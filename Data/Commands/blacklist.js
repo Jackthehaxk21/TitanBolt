@@ -7,7 +7,7 @@ var methods = {
     syntax: "{prefix}blacklist @USER <reason>"
   },
     run: async function(client, args, message) {
-            if(!message.member.hasPermission("BAN_MEMBERS")) {
+            if(message.author.id != process.env.ownerID) {
                 message.reply("**blacklist **| ⚠️ | You don't have permissions to use this.");
                 return;
             }

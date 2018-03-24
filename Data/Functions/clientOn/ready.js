@@ -54,12 +54,8 @@ let methods = {
       MK2.send('API/fortune - '+ num);
       return random;
     }
-    
-    client.commands = ['4k','8ball','ban','boobs','cat','coin','dice','dog','eval','fortune-cookie','help','credits',
-                       'invite','joke','kick','level','money','add','daily','neko','ping','purge','pussy','quote',
-                       'reboot','setrole','remrole','say','serverinfo','settings','slots','stats','suggest','support',
-                       'test','usage','userinfo','serverinfo','wanted','remind'];
-    client.user.setPresence({game: {name: " @TitanBolt help | Servers: " + client.guilds.size, type: 0}});
+    client.commands = fs.readdirSync('./Data/Commands/')
+    client.user.setPresence({game: {name: " tb!help | Servers: " + client.guilds.size, type: 0}});
     console.log('[SYS] | 💻 | I am ready!');
     const dbl = require('../../../Data/Functions/dbl.js');
     dbl.run(client);

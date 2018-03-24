@@ -14,8 +14,8 @@ var methods = {
         }
       const fs = require('fs')
       let list = fs.readdirSync('./Data/Commands/')
-      //list = list.split(',')
-      let full = '```asciidoc'
+      let cat = {}
+      let object = {cats: []}
       let space;
       for(let i = 0; i < list.length; i++) {
         if(list[i] != 'handler.js' && list[i] != 'API' && list[i] != 'Modules') {
@@ -23,13 +23,23 @@ var methods = {
           tmp = tmp.meta
           //console.log(tmp)
           space = ""
-          for(let i = tmp.name.length; i < 12; i ++) { space += " ";}
-          if(tmp.cat != 'Private') full += '\n'+prefix+tmp.name+(space)+':: '+tmp.desc
+          for(let i3 = tmp.name.length; i3 < 12; i3 ++) { space += " ";}
+          if(tmp.cat != 'Private' && object[tmp.cat] != undefined) object[tmp.cat].push(prefix+tmp.name+(space)+':: '+tmp.desc+'\n')
+          if(tmp.cat != 'Private' && object[tmp.cat] == undefined) {
+            object.cats.push(tmp.cat)
+            object[tmp.cat] = [prefix+tmp.name+(space)+':: '+tmp.desc+'\n']
+          }
         }
       }
-      full += '```'
+      let tmp = ''
+      for(let i = 0; i < object.cats.length; i++){
+        tmp += '\n=== '+object.cats[i]+' ===\n';
+        for(let i2 = 0; i2 < object[object.cats[i]].length; i2++){
+          tmp += object[object.cats[i]][i2]+'\n'
+        }
+      }
       try{
-        message.author.send(full)
+        message.author.send('```asciidoc'+tmp+'```')
       } catch (err) {
         message.reply('Oh No!\nI couldnt send docs to your DM.')
         return;

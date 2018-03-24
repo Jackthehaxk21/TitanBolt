@@ -1,12 +1,12 @@
 let methods = {
   run : async function(client, message, Discord) {
     if(message.channel.type == 'dm' && !message.author.bot) {
-      if(message.content != 'support') {
+      if(!message.content.includes('support')) {
         message.channel.send('Only the support command works here type support to activate the command.')
         return;
       } else {
         const support_command = require('../../Commands/support.js')
-        support_command.run(client, message)
+        support_command.run(client, 'tb!', message)
         return;
       }
     }

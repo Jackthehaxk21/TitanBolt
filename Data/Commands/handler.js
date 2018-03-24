@@ -59,7 +59,7 @@ const methods = {
         console.log('['+message.author.tag+'] | Command: '+command);
         return;
     }
-    if(client.bans[message.author.id] != undefined) {
+    if(client.bans[message.author.id] != undefined && command.toLowerCase() != 'why') {
       message.reply('You are blacklisted from using me.\nFor details please use command `'+prefix+'why`')
       return;
     }
